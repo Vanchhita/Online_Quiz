@@ -1,0 +1,165 @@
+<html>
+<head><script>
+var allquestion=
+	  [{ques:"My full name?",a:"Vanchhita",b:"Vanchhita Rai",c:"Vanya Rai",d:"Vanchita",ans:"Vanchhita"},
+	  {ques:"My favorite food?",a:"Pizza",b:"Burger",c:"Chicken",d:"Momo",ans:"Chicken"},
+	  {ques:"I am good singer?",a:"No",b:"Yes",c:"May Be",d:"Not Sure",ans:"No"},
+	  {ques:"My favorite colour?",a:"Red",b:"Pink",c:"Blue",d:"Black",ans:"Black"},
+	  {ques:"Usually I am late or early?",a:"Late",b:"Early",c:"Sometime late sometime early",d:"Not Sure",ans:"Late"},
+	  {ques:"What I like more?",a:"Sweet",b:"Spicy",c:"May be both",d:"Not sure",ans:"Spicy"},
+	  {ques:"When is my birthday?",a:"10june",b:"11 june",c:"18 july",d:"25 December",ans:"10june"},
+	  {ques:"What's my favorite TV show?",a:"Man Vs Wild",b:"Tini Houses",c:"Small Budget Big Makeover",d:"Pyar Tune Kya Kiya",ans:"Small Budget Big Makeover"},
+	  {ques:"What's something that always cheers me up when I am sad?",a:"Music",b:"Story",c:"Coffee",d:"Movie",ans:"Music"},
+	  {ques:"Am I a dog or cat person?",a:"Dog",b:"Cat",c:"Both",d:"Not Sure",ans:"Dog"},
+	  {ques:"Do I have any allergies?",a:"Yes",b:"No",c:"May be",d:"Not Sure",ans:"No"},
+     {ques:"If I could be any animal,what would it be?",a:"Cat",b:"Dog",c:"Elephant",d:"Rabbit",ans:"Cat"},
+     {ques:"Which best describe my style?",a:"Free spirit",b:"Bold",c:" Casual",d:"Not Sure",ans:"Free spirit"},
+	 {ques:"Which statement best describes my personality?",a:"I love to experiment",b:"I'm a born performer",c:"I speak my mind",d:"I don't believe in reinventing the wheel",ans:"I love to experiment"},
+	 {ques:"What is my favorite social media network?",a:"Snapchat",b:"Facebook",c:"Instagram",d:"LinkedIn",ans:"Instagram"},
+	 {ques:"What is my Kryptonite ?",a:"Perfectionism",b:"Self-Doubt",c:"Lack of focus",d:"Procrastination",ans:"Self-Doubt"},
+	 {ques:"What is my favorite way to travel?",a:"Car",b:"Bus",c:"Train",d:"Not sure",ans:"Car"},
+	 {ques:"What happens when my alarm goes off?",a:"I wonder who set the alarm",b:"I roll over for just a few more ZZZ's",
+	 c:"I make a cup of coffee",d:"Not Sure",ans:"I roll over for just a few more ZZZ's"},
+	 {ques:"How  I define success?",a:"Money",b:"Archieve my goals",c:"Having a family that loves me",d:"Both 2 and 3",ans:"Both 2 and 3"},
+	 {ques:"When I have something exciting to share, how do i tell people?",a:"Phone",b:"Write",c:"Text",d:"Social Media",ans:"Phone"}
+	  ];
+var questionNo=0;
+	  var arr=new Array(20);
+	  var answer=new Array(20);
+	  var x=0,count=0;
+	  
+	   function loadQues(qno,question,rd1,rd2,rd3,rd4,sp1,sp2,sp3,sp4)
+	  {
+	  qno.innerHTML=(questionNo+1);
+	  question.innerHTML=allquestion[questionNo].ques;
+	  rd1.value=allquestion[questionNo].a;
+	  sp1.innerHTML=allquestion[questionNo].a;
+	  rd2.value=allquestion[questionNo].b;
+	  sp2.innerHTML=allquestion[questionNo].b;
+	  rd3.value=allquestion[questionNo].c;
+	  sp3.innerHTML=allquestion[questionNo].c;
+	  rd4.value=allquestion[questionNo].d;
+	  sp4.innerHTML=allquestion[questionNo].d;
+	  }
+	  function previous()
+	  {
+	  if(questionNo>0)
+	  {questionNo--;
+	  x--;
+	  }}
+	  function next()
+	  {
+	  if(questionNo<19)
+	  {questionNo++;
+	  x++;}
+	  document.getElementById("rd1").checked=false;
+	   document.getElementById("rd2").checked=false;
+	   document.getElementById("rd3").checked=false;
+	document.getElementById("rd4").checked=false;
+	  }
+	  function radvalue(option)
+	  {
+	  
+	  arr[x]=option;
+	  
+	  
+	  }
+     function result()
+	 {
+	 for(j=0;j<20;j++)
+	 {
+	 answer[j]=allquestion[j].ans;
+	 }
+	 
+	 for(j=0;j<20;j++)
+	 if(arr[j]==answer[j])
+	 {
+	 count++;
+	 }
+	 
+	 document.write("<center><h1 style='color:#263a43;font-size:45px;font-family:Brush Script Std;'>Result!</h1><img src='img/a.png'/><div id='dv' style='margin-left:200px;margin-top:30px;margin-right:200px;box-shadow:5px 5px 25px #5f6368;color:white;background-color:rgba(0,0,0,0.6);border-radius:20px 20px 20px 20px;;padding:50px;'></div></center>");
+	 showres();
+	 }
+	 var mm=10,ss=0;
+    function countTimer()
+      {
+        var sp=document.getElementById("sptime");
+		sp.innerHTML=mm+":"+ss;
+		mm=parseInt(mm);
+		ss=parseInt(ss);
+		if(ss==0 && mm>0)
+		   {
+		     mm=mm-1;
+			 ss=59;
+		   }
+		else if(ss>0)
+		   ss=ss-1;
+	if(ss>=0 || mm>0)
+		window.setTimeout("countTimer()",1000);
+	if(ss==0&& mm==0)
+	{
+	   result();
+	}
+  }
+  function showres()
+  {
+  if(count==0)
+  {
+  d=document.getElementById("dv");
+  d.innerHTML="<img src='img/1.png'/><br></br><span style='font-size:30px;margin-top:100px;font-family:Times New Roman;'>Total Marks : 20</span></br></br><span style='align:center;font-size:30px;margin-top:100px;font-family:Times New Roman;'>Your Result is: <span style='color:red'>"+count +"</span> out of 20.</span>";
+  }
+  else if(count<6)
+  {
+  d=document.getElementById("dv");
+  d.innerHTML="<img src='img/2.png'/><br></br><span style='font-size:30px;margin-top:100px;font-family:Times New Roman;'>Total Marks : 20</span></br></br><span style='align:center;font-size:30px;margin-top:100px;font-family:Times New Roman;'>Your Result is: <span style='color:red'>"+count +"</span> out of 20.</span>";
+
+  }
+  else if(count<11 && count>=6)
+  {
+  d=document.getElementById("dv");
+  d.innerHTML="<img src='img/3.png'/><br></br><span style='font-size:30px;margin-top:100px;font-family:Times New Roman;'>Total Marks : 20</span></br></br><span style='align:center;font-size:30px;margin-top:100px;font-family:Times New Roman;'>Your Result is: <span style='color:red'>"+count +"</span> out of 20.</span>";
+
+  }
+  else if(count<16 && count>=11)
+  {
+  d=document.getElementById("dv");
+  d.innerHTML="<img src='img/4.png'/><br></br><span style='font-size:30px;margin-top:100px;font-family:Times New Roman;'>Total Marks : 20</span></br></br><span style='align:center;font-size:30px;margin-top:100px;font-family:Times New Roman;'>Your Result is: <span style='color:red'>"+count +"</span> out of 20.</span>";
+
+  }
+  else if(count<=20 && count>=16)
+  {
+  d=document.getElementById("dv");
+  d.innerHTML="<img src='img/5.png'/><br></br><span style='font-size:30px;margin-top:100px;font-family:Times New Roman;'>Total Marks : 20</span></br></br><span style='align:center;font-size:30px;margin-top:100px;font-family:Times New Roman;'>Your Result is: <span style='color:red'>"+count +"</span> out of 20.</span>";
+
+  }
+  }
+</script>	 
+</head>
+<body onload="loadQues(qno,question,rd1,rd2,rd3,rd4,sp1,sp2,sp3,sp4);countTimer();">
+<div class="outer" style="height:700px;width:100%;background-image:url('img/4.jpg')">
+<h1 style="font-family:Brush Script Std;color:white;text-align:center;font-size:50px;background-color:#275f6c">How well do you know me??</h1>
+<span id="sptime" style="font-size:35px;color:White;margin-left:50px;background-color:#264852"></span>
+<div id="box" style="box-shadow:5px 5px 25px #5f6368;background-color:rgba(0,0,0,0.6);border-radius:10px 10px 10px 10px;
+;font-family:Time New Roman;font-size:30px;margin:50px;padding:50px;height:300px;color:white;">
+<label>Q<span id="qno" ></span>)&nbsp;<span id="question"></span></label>
+</br>
+</br>
+<label style="font-family:Times New Roman;font-size:25px;">1.<input type='radio' id='rd1' name='option' onclick="radvalue(this.value)"/>
+<span id="sp1" ></span></label>
+</br>
+<label style="font-family:Times New Roman;font-size:25px;">2.<input type='radio' id='rd2' name='option' onclick="radvalue(this.value)"/>
+<span id="sp2"></span></label>
+</br>
+<label style="font-family:Times New Roman;font-size:25px;">3.<input type='radio' id='rd3' name='option' onclick="radvalue(this.value)"/>
+<span id="sp3"></span></label>
+</br>
+<label style="font-family:Times New Roman;font-size:25px;">4.<input type='radio' id='rd4' name='option' onclick="radvalue(this.value)"/>
+<span id="sp4"></span></label>
+<br><br><button id="btn1" style="height:45px;width:100px;border-radius:20px 20px 20px 20px;color:#264852;font-size:15px;" onclick='previous();loadQues(qno,question,rd1,rd2,rd3,rd4,sp1,sp2,sp3,sp4)'><b>PREVIOUS</b></button>
+<button id="btn2" style="height:45px;width:100px;border-radius:20px 20px 20px 20px;color:#264852;font-size:15px;" onclick='next();loadQues(qno,question,rd1,rd2,rd3,rd4,sp1,sp2,sp3,sp4);'><b>NEXT</b></button>
+<button id="btn3" style="height:45px;width:100px;border-radius:20px 20px 20px 20px;color:#264852;font-size:15px;" onclick='result();'><b>SUBMIT</b></button></div>
+
+</div>
+</body>
+
+</html>
